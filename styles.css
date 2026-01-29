@@ -1,0 +1,7 @@
+body {
+    font-family: Helvetica, sans-serif;
+}
+section {
+    max-width: 300;
+    background-color: rgb(240, 181, 255);
+}
