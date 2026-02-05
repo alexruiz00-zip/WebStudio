@@ -10,10 +10,10 @@
 </head>
 
 <body class="bg-light">
-
+     
   <header class="bg-white border-bottom sticky-top">
     <div class="container py-3 d-flex justify-content-between align-items-center">
-      <h1 class="h4 m-0">Mi sitio</h1>
+      <h1 class="h4 m-0">DINAMARCA</h1>
       <nav class="d-flex gap-3">
         <a href="index.html">Inicio</a>
         <a href="about.html">Acerca</a>
@@ -21,19 +21,47 @@
       </nav>
     </div>
   </header>
+ <div id="galeriaAbout" class="carousel slide mb-4" data-bs-ride="carousel">
 
+        <div class="carousel-inner rounded-3 overflow-hidden">
+          <div class="carousel-item active">
+            <!-- Puedes usar tu imagen local -->
+            <img src="https://images.unsplash.com/photo-1551651767-d5ffbdd04b83?q=80&w=2232&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="DENMARK 1">
+          </div>
+
+          <div class="carousel-item">
+            <!-- Placeholder online para que no falle si no tienes más archivos -->
+            <img src="https://images.unsplash.com/photo-1559070226-d4cad642bede?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="DENMARK 2">
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1577346895253-445f05a6670d?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="DENMARK 3">
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#galeriaAbout" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#galeriaAbout" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+
+      </div>
   <main class="container py-5">
 
     <section class="bg-white p-4 rounded-4 shadow-sm">
-      <h2 class="h5">Actividad: Modal</h2>
-      <p class="text-muted">Un botón abre una ventana encima de la página.</p>
+      <h1 class="h5"><strong>DESCUBRE DINAMARCA</strong></h1>
+      <p class="text-muted">Ciudades que respiran diseño, naturaleza que se mueve a tu ritmo y una forma de vivir donde todo se siente en balance.</p>
 
       <!-- NUEVO: botón disparador del modal -->
       <button
-        class="btn btn-dark"
+        class="btn btn-danger"
         data-bs-toggle="modal"
         data-bs-target="#modalResena">
-        Ver reseña en modal
+        CONOCE MÁS
       </button>
     </section>
 
@@ -45,19 +73,16 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <h5 class="modal-title">Reseña de chilaquiles</h5>
+          <h5 class="modal-title">UNA FORMA DISTINTA DE VIVIR</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
 
         <div class="modal-body">
-          <p class="mb-3">Aquí va tu texto extra (precio, ingredientes, recomendación, etc.).</p>
+          <p class="mb-3">Dinamarca combina innovación, cultura y bienestar en cada aspecto de la vida cotidiana. Desde sus espacios públicos hasta su manera de habitar el tiempo, todo responde a una visión clara: poner a las personas al centro.</p>
 
           <!-- NUEVO: video responsive -->
           <div class="ratio ratio-16x9">
-            <iframe
-              src="https://www.youtube.com/embed/MpOBf4K_2KA"
-              title="Review"
-              allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1oa1hi_Ib4g?si=Tnw71AdtECTXiWEO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
         </div>
 
