@@ -3,23 +3,173 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Producto · Mi sitio</title>
+  <title>PRODUCTO · DANIEL CAESAR</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Parastoo&display=swap" rel="stylesheet">
 
   <style>
-    /* ---------------------------------------------------------
-       MODAL DEL VISOR 3D
-    --------------------------------------------------------- */
+    /* 1. ESTILO GLOBAL */
+    body, h1, h2, h3, h4, h5, h6, p, a, small, .text-muted, input, button {
+      color: #2D2D2D !important;
+      font-family: 'Parastoo', serif;
+    }
 
-    /* El canvas ocupa todo el modal-body */
+    body {
+      background-color: #FFFCF3; /* Fondo crema */
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* 2. NAVBAR (Idéntica al resto, con Carrito) */
+    .navbar-hero {
+      position: relative; 
+      padding: 24px 6vw; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 40;
+    }
+
+    .navbar-hero .logo {
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .navbar-hero nav {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .navbar-hero nav a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 6px 12px;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s;
+    }
+    
+    .navbar-hero nav a:hover {
+      opacity: 0.7;
+    }
+
+    .cart-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 3. LAYOUT DE PRODUCTO */
+    .product-section {
+      padding: 40px 6vw;
+      min-height: 70vh;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #8B1919;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: #8B1919;
+    }
+
+    /* 4. ELEMENTOS INYECTADOS POR JS (Limpiar estilos Bootstrap default) */
+    #productDetail .card, #reviewsList .card {
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+    }
+
+    /* 5. FORMULARIOS (Igual a Contacto/Login) */
+    .custom-input {
+      background-color: transparent !important;
+      border: none !important;
+      border-bottom: 1px solid rgba(45, 45, 45, 0.3) !important;
+      border-radius: 0 !important;
+      padding: 12px 0 !important;
+      font-size: 1.1rem !important;
+      box-shadow: none !important;
+      transition: border-color 0.3s;
+    }
+
+    .custom-input:focus {
+      border-bottom: 1px solid #8B1919 !important;
+    }
+
+    .custom-input::placeholder {
+      color: rgba(45, 45, 45, 0.4) !important;
+    }
+
+    /* 6. BOTONES */
+    .btn-hero-primary {
+      background: #8B1919 !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 999px !important;
+      padding: 12px 32px;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-hero-primary:hover {
+      background: #550707 !important;
+      transform: translateY(-2px);
+    }
+
+    /* 7. MODAL DEL VISOR 3D (Estilizado para encajar) */
+    .modal-content {
+      background-color: #FFFCF3; /* Fondo crema para el modal */
+      border-radius: 0;
+      border: 1px solid rgba(45, 45, 45, 0.1);
+    }
+
+    .modal-header {
+      border-bottom: 1px solid rgba(45, 45, 45, 0.1);
+    }
+
+    .modal-footer {
+      border-top: 1px solid rgba(45, 45, 45, 0.1);
+    }
+
+    .modal-title {
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .btn-close {
+      opacity: 0.5;
+    }
+
     #visor3d-canvas-wrap {
       position: relative;
       width: 100%;
       height: 480px;
-      background: #0a0a0f;
-      border-radius: 12px;
+      background: #0a0a0f; /* Se mantiene oscuro para resaltar el 3D */
+      border-radius: 0; /* Sin bordes redondeados */
       overflow: hidden;
     }
 
@@ -29,7 +179,6 @@
       display: block;
     }
 
-    /* Loader dentro del visor */
     #visor3d-loader {
       position: absolute;
       inset: 0;
@@ -37,10 +186,10 @@
       align-items: center;
       justify-content: center;
       background: #0a0a0f;
-      color: rgba(255,255,255,0.3);
-      font-size: 13px;
-      font-family: system-ui, sans-serif;
-      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       transition: opacity 0.4s;
       z-index: 5;
     }
@@ -50,121 +199,124 @@
       pointer-events: none;
     }
 
-    /* Hint de controles */
     .visor3d-hint {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #9ca3af;
+      margin-top: 15px;
+      font-size: 11px;
+      color: rgba(45, 45, 45, 0.6);
       text-align: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .visor3d-hint span {
       margin: 0 8px;
     }
+
+    footer {
+      padding: 40px 6vw;
+      border-top: 1px solid rgba(45, 45, 45, 0.1);
+      margin-top: 60px;
+    }
   </style>
 </head>
 <body>
 
-  <header class="bg-white border-bottom sticky-top">
-    <div class="container py-3 d-flex justify-content-between align-items-center">
-      <h1 class="h4 m-0">Mi sitio</h1>
-      <nav class="d-flex gap-3">
-        <a href="index.html">Inicio</a>
-        <a href="about.html">Acerca</a>
-        <a href="tienda.html">Tienda</a>
-        <a href="contact.html">Contacto</a>
-      </nav>
-    </div>
-  </header>
+  <div class="navbar-hero">
+    <a href="index.html" class="logo">DANIEL CAESAR</a>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="store.html" style="text-decoration: underline;">STORE</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="auth.html">LOG IN</a>
+      <a href="admin.html">ADMIN</a>
+      <a href="cart.html" class="cart-link ms-2">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        CART
+      </a>
+    </nav>
+  </div>
 
-  <main class="container py-5">
+  <main class="product-section">
     <div id="status" class="mb-3"></div>
 
-    <!-- Detalle del producto — el JS de Firebase inyecta aquí el HTML -->
-    <!-- Se agrega el botón "Ver en 3D" dentro del detalle via producto.js -->
-    <section id="productDetail" class="bg-white p-4 rounded-4 shadow-sm mb-4"></section>
+    <p class="section-eyebrow">DETAILS</p>
+    
+    <section id="productDetail" class="mb-5"></section>
 
-    <section class="bg-white p-4 rounded-4 shadow-sm mb-4">
-      <h3 class="h5 mb-3">Agregar review</h3>
+    <hr style="opacity: 0.1; margin: 40px 0;">
 
-      <form id="reviewForm" class="row g-3">
-        <div class="col-12 col-md-4">
-          <label class="form-label">Nombre</label>
-          <input class="form-control" type="text" name="nombre" required>
-        </div>
+    <div class="row">
+      <div class="col-lg-5 mb-5 mb-lg-0">
+        <p class="section-eyebrow">FEEDBACK</p>
+        <h3 class="h4 fw-bold mb-4" style="letter-spacing: -0.02em;">LEAVE A REVIEW</h3>
 
-        <div class="col-12 col-md-8">
-          <label class="form-label">Review</label>
-          <input class="form-control" type="text" name="mensaje" required>
-        </div>
+        <form id="reviewForm" class="row g-3">
+          <div class="col-12">
+            <input class="form-control custom-input" type="text" name="nombre" placeholder="Nombre completo" required>
+          </div>
 
-        <div class="col-12">
-          <button class="btn btn-success" type="submit">Enviar review</button>
-        </div>
-      </form>
+          <div class="col-12 mb-3">
+            <input class="form-control custom-input" type="text" name="mensaje" placeholder="Tu reseña o comentario..." required>
+          </div>
 
-      <div id="reviewStatus" class="mt-3"></div>
-    </section>
+          <div class="col-12">
+            <button class="btn btn-hero-primary" type="submit">Enviar review</button>
+          </div>
+        </form>
 
-    <section class="bg-white p-4 rounded-4 shadow-sm">
-      <h3 class="h5 mb-3">Reviews</h3>
-      <div id="reviewsList"></div>
-    </section>
+        <div id="reviewStatus" class="mt-3 fw-bold" style="font-size: 12px;"></div>
+      </div>
+
+      <div class="col-lg-6 offset-lg-1">
+        <p class="section-eyebrow">COMMUNITY</p>
+        <h3 class="h4 fw-bold mb-4" style="letter-spacing: -0.02em;">REVIEWS</h3>
+        <div id="reviewsList"></div>
+      </div>
+    </div>
   </main>
 
-  <footer class="bg-white border-top">
-    <div class="container py-3 text-center text-muted">
-      <small>© 2026 · Mi sitio</small>
-    </div>
+  <footer class="text-center">
+    <small style="letter-spacing: 0.2em; opacity: 0.6;">© 2026 · DANIEL CAESAR</small>
   </footer>
 
-
-  <!-- =====================================================
-       MODAL VISOR 3D
-  ====================================================== -->
   <div class="modal fade" id="modal3d" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
 
         <div class="modal-header">
-          <h5 class="modal-title">Vista 3D del producto</h5>
+          <h5 class="modal-title">VISTA 3D DEL PRODUCTO</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
-        <div class="modal-body">
-          <!-- Contenedor del canvas -->
+        <div class="modal-body p-0">
           <div id="visor3d-canvas-wrap">
             <div id="visor3d-loader">Cargando modelo…</div>
-            <!-- Three.js inyecta el canvas aquí -->
           </div>
 
-          <!-- Instrucciones de uso -->
-          <p class="visor3d-hint">
-            <span>🖱 Arrastrar → rotar</span>
-            <span>⚲ Rueda → zoom</span>
-            <span>↕ Click der. → mover</span>
-          </p>
+          <div class="p-3">
+            <p class="visor3d-hint">
+              <span>🖱 Arrastrar → Rotar</span>
+              <span>⚲ Rueda → Zoom</span>
+              <span>↕ Click der. → Mover</span>
+            </p>
+          </div>
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button class="btn btn-hero-primary" style="background: transparent !important; color: #2D2D2D !important; border: 1px solid rgba(45,45,45,0.2) !important;" data-bs-dismiss="modal">CERRAR</button>
         </div>
 
       </div>
     </div>
   </div>
 
-
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Firebase -->
   <script type="module" src="js/producto.js"></script>
 
-
-  <!-- =====================================================
-       THREE.JS — visor del modal
-  ====================================================== -->
   <script type="importmap">
     {
       "imports": {
@@ -182,7 +334,6 @@
     const wrap = document.getElementById('visor3d-canvas-wrap');
     const loader3d = document.getElementById('visor3d-loader');
 
-    // Setup
     const scene    = new THREE.Scene();
     const camera   = new THREE.PerspectiveCamera(50, wrap.clientWidth / wrap.clientHeight, 0.1, 100);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -194,12 +345,10 @@
     renderer.toneMappingExposure = 1.2;
     wrap.appendChild(renderer.domElement);
 
-    // Controles
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
 
-    // Luces
     scene.add(new THREE.AmbientLight(0xffffff, 0.8));
     const luzPrincipal = new THREE.DirectionalLight(0xffffff, 3);
     luzPrincipal.position.set(5, 8, 5);
@@ -208,30 +357,22 @@
     luzRelleno.position.set(-5, -3, -3);
     scene.add(luzRelleno);
 
-    // El modelo se carga cuando el usuario abre el modal (ver evento show.bs.modal abajo)
-
-    // Loop
     (function animar() {
       requestAnimationFrame(animar);
       controls.update();
       renderer.render(scene, camera);
     })();
 
-    // Cuando el modal abre:
-    // 1. Leemos la ruta del modelo desde el botón que lo disparó
-    // 2. Ajustamos el tamaño del renderer (estaba oculto, dimensiones eran 0)
     document.getElementById('modal3d').addEventListener('show.bs.modal', (e) => {
-      // e.relatedTarget es el botón que abrió el modal
-      const rutaModelo = e.relatedTarget?.dataset?.modelo;
+      const rutaModelo = "chair.gltf";
 
       if (rutaModelo) {
-        // Limpiamos el modelo anterior si había uno
         scene.children
           .filter(obj => obj.name === 'modeloCargado')
           .forEach(obj => scene.remove(obj));
 
         loader3d.classList.remove('oculto');
-        loader3d.textContent = 'Cargando modelo…';
+        loader3d.textContent = 'CARGANDO MODELO…';
 
         new GLTFLoader().load(
           './' + rutaModelo,
@@ -253,7 +394,7 @@
           null,
           (err) => {
             console.error(err);
-            loader3d.textContent = 'No se pudo cargar el modelo.';
+            loader3d.textContent = 'ERROR AL CARGAR EL MODELO';
           }
         );
       }
@@ -265,7 +406,6 @@
       renderer.setSize(wrap.clientWidth, wrap.clientHeight);
     });
 
-    // Responsive
     window.addEventListener('resize', () => {
       camera.aspect = wrap.clientWidth / wrap.clientHeight;
       camera.updateProjectionMatrix();

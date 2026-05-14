@@ -3,44 +3,248 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Acceso</title>
+  <title>LOG IN · DANIEL CAESAR</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Parastoo&display=swap" rel="stylesheet">
+
+  <style>
+    /* 1. ESTILO GLOBAL */
+    body, h1, h2, h3, h4, h5, h6, p, a, small, .text-muted, input, button {
+      color: #2D2D2D !important;
+      font-family: 'Parastoo', serif;
+    }
+
+    body {
+      background-color: #FFFCF3; /* Mismo fondo crema */
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* 2. NAVBAR (Idéntica a index, about y store) */
+    .navbar-hero {
+      position: relative; 
+      padding: 24px 6vw; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 40;
+    }
+
+    .navbar-hero .logo {
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .navbar-hero nav {
+      display: flex;
+      gap: 4px;
+    }
+
+    .navbar-hero nav a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 6px 12px;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s;
+    }
+    
+    .navbar-hero nav a:hover {
+      opacity: 0.7;
+    }
+
+    /* 3. LAYOUT DE AUTENTICACIÓN */
+    .auth-section {
+      padding: 40px 6vw;
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .auth-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #8B1919;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .auth-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: #8B1919;
+    }
+
+    .auth-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      margin-bottom: 40px;
+    }
+
+    .auth-title span {
+      background: #8B1919;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 4. ESTILOS DEL FORMULARIO */
+    .form-wrapper {
+      max-width: 400px;
+    }
+
+    .custom-input {
+      background-color: transparent !important;
+      border: none !important;
+      border-bottom: 1px solid rgba(45, 45, 45, 0.3) !important;
+      border-radius: 0 !important;
+      padding: 12px 0 !important;
+      font-size: 1.1rem !important;
+      box-shadow: none !important;
+      transition: border-color 0.3s;
+    }
+
+    .custom-input:focus {
+      border-bottom: 1px solid #8B1919 !important;
+    }
+
+    .custom-input::placeholder {
+      color: rgba(45, 45, 45, 0.4) !important;
+    }
+
+    /* 5. BOTONES */
+    .btn-hero-primary {
+      background: #8B1919 !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 999px !important;
+      padding: 12px 32px;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-hero-primary:hover {
+      background: #550707 !important;
+      transform: translateY(-2px);
+    }
+
+    .btn-hero-ghost {
+      background: transparent !important;
+      color: #2D2D2D !important;
+      border: 1px solid rgba(45, 45, 45, 0.2) !important;
+      border-radius: 999px !important;
+      padding: 12px 32px;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .btn-hero-ghost:hover {
+      border-color: #2D2D2D !important;
+      transform: translateY(-2px);
+    }
+
+    .btn-text-only {
+      background: transparent !important;
+      border: none !important;
+      color: rgba(45, 45, 45, 0.6) !important;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: underline;
+    }
+    .btn-text-only:hover {
+      color: #8B1919 !important;
+    }
+
+    footer {
+      padding: 40px 6vw;
+      border-top: 1px solid rgba(45, 45, 45, 0.1);
+    }
+  </style>
 </head>
 <body>
 
+  <div class="navbar-hero">
+    <a href="index.html" class="logo">DANIEL CAESAR</a>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="store  .html">STORE</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="auth.html" style="text-decoration: underline;">LOG IN</a>
+      <a href="admin.html">ADMIN</a>
+      <a href="carrito.html">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        CART
+      </a>
+    </nav>
+  </div>
 
-     <header class="bg-white border-bottom sticky-top">
-    <div class="container py-3 d-flex justify-content-between align-items-center">
-      <h1 class="h4 m-0">DINAMARCA</h1>
-      <nav class="d-flex gap-3">
-        <a href="index.html">Inicio</a>
-        <a href="about.html">Acerca</a>
-        <a href="contact.html">Contacto</a>
-        <a href="store.html">Tienda</a>
-        <a href="auth.html">Log In</a>
-      </nav>
+  <main class="auth-section">
+    <div class="container-fluid p-0">
+      
+      <p class="auth-eyebrow">PORTAL</p>
+      <h1 class="auth-title">
+        ACCOUNT<br>
+        <span>ACCESS</span>
+      </h1>
+
+      <div class="form-wrapper">
+        <form id="authForm" class="mb-4">
+          
+          <div class="mb-3">
+            <input class="form-control custom-input" type="email" name="email" placeholder="Email Address" required>
+          </div>
+          <div class="mb-5">
+            <input class="form-control custom-input" type="password" name="password" placeholder="Password" required>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3 align-items-center">
+            <button class="btn btn-hero-primary" type="button" id="loginBtn">Entrar</button>
+            <button class="btn btn-hero-ghost" type="submit">Registrarse</button>
+          </div>
+          
+          <div class="mt-4">
+            <button class="btn btn-text-only px-0" type="button" id="logoutBtn">Cerrar Sesión (Salir)</button>
+          </div>
+
+        </form>
+
+        <div id="authStatus" class="fw-bold mt-3"></div>
+        <div id="authUser" class="mt-2 text-muted"></div>
+      </div>
+
     </div>
-  </header>
+  </main>
 
-<div class="container py-5">
-  <h2 class="mb-4">Registro / Login</h2>
+  <footer class="text-center">
+    <small style="letter-spacing: 0.2em; opacity: 0.6;">© 2026 · DANIEL CAESAR</small>
+  </footer>
 
-  <form id="authForm" class="mb-3">
-    <input class="form-control mb-2" type="email" name="email" placeholder="Email" required>
-    <input class="form-control mb-2" type="password" name="password" placeholder="Password" required>
-
-    <button class="btn btn-success" type="submit">Registrarse</button>
-    <button class="btn btn-dark" type="button" id="loginBtn">Entrar</button>
-    <button class="btn btn-secondary" type="button" id="logoutBtn">Salir</button>
-  </form>
-
-  <div id="authStatus"></div>
-  <div id="authUser" class="mt-2 text-muted"></div>
-</div>
-
-<script type="module" src="js/auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script type="module" src="js/auth.js"></script>
 
 </body>
 </html>
