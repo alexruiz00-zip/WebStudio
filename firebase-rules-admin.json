@@ -1,0 +1,67 @@
+{
+  "rules": {
+
+    // =====================================================
+    // ADMINS
+    // Solo usuarios autenticados pueden leer este nodo.
+    // Nadie puede escribirlo desde el frontend —
+    // el profe lo agrega manualmente desde la consola.
+    // =====================================================
+    "admins": {
+      ".read": "auth != null",
+      ".write": false
+    },
+
+    // =====================================================
+    // STORE — productos de la tienda
+    // Cualquiera puede leer. Nadie escribe desde el frontend.
+    // =====================================================
+    "store": {
+      ".read": true,
+      ".write": false
+    },
+
+    // =====================================================
+    // REVIEWS — reseñas de productos
+    // Cualquiera puede leer y escribir.
+    // =====================================================
+    "reviews": {
+      ".read": true,
+      ".write": true
+    },
+
+    // =====================================================
+    // CONTACTOS — mensajes del formulario
+    // Cualquiera puede escribir (enviar mensaje).
+    // Solo el admin puede leer (ver los mensajes).
+    // =====================================================
+    "contactos": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).exists()",
+      ".write": true
+    },
+
+    // =====================================================
+    // CARTS — carritos de compra
+    // Cada usuario solo puede leer y escribir su propio carrito.
+    // =====================================================
+    "carts": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+
+    // =====================================================
+    // ORDENES — historial de compras
+    // Cada usuario solo ve sus propias órdenes.
+    // El admin puede ver todas.
+    // =====================================================
+    "ordenes": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admins').child(auth.uid).exists())",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    }
+
+  }
+}

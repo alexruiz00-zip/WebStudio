@@ -5,20 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Acerca · Mi sitio</title>
 
-  <!-- Bootstrap CSS -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet">
 
-  <!-- Tu CSS -->
   <link href="styles.css" rel="stylesheet">
+
+  <style>
+    body, h1, h2, h3, h4, h5, h6, p, a, small, 
+    .text-muted, .accordion-button, .accordion-body {
+      color: #2D2D2D !important;
+    }
+    
+    /* Mantiene los enlaces sin subrayado hasta que pasas el cursor */
+    a {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body class="bg-light">
 
    <header class="bg-white border-bottom sticky-top">
     <div class="container py-3 d-flex justify-content-between align-items-center">
-      <h1 class="h4 m-0">DINAMARCA</h1>
+      <h1 class="h4 m-0">DANIEL CAESAR</h1>
       <nav class="d-flex gap-3">
         <a href="index.html">Inicio</a>
         <a href="about.html">Acerca</a>
@@ -38,18 +51,14 @@
         Dinamarca es un país definido por la <strong>simplicidad, el equilibrio y el diseño centrado en las personas.</strong> De ciudades vibrantes a costas tranquilas, la vida cotidiana combina cultura, naturaleza e innovación de forma natural. Aquí, la sostenibilidad, la creatividad y el bienestar no son tendencias, sino parte de la manera en que el país avanza.
       </p>
 
-      <!-- ✅ NUEVO 1: CAROUSEL (galería slider) -->
-      <!-- Tip: se ve mejor si las imágenes tienen tamaños parecidos -->
       <div id="galeriaAbout" class="carousel slide mb-4" data-bs-ride="carousel">
 
         <div class="carousel-inner rounded-3 overflow-hidden">
           <div class="carousel-item active">
-            <!-- Puedes usar tu imagen local -->
             <img src="https://images.unsplash.com/photo-1592819847775-6310d3834c92?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Chilaquiles 1">
           </div>
 
           <div class="carousel-item">
-            <!-- Placeholder online para que no falle si no tienes más archivos -->
             <img src="https://images.unsplash.com/photo-1559070134-1cf028349181?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Chilaquiles 2">
           </div>
 
@@ -70,7 +79,6 @@
 
       </div>
 
-      <!-- Contenido normal (opcional) -->
       <div class="row g-3 align-items-start mb-4">
         <div class="col-12 col-md-6">
           <h3 class="h6">CULTURA Y DISEÑO</h3>
@@ -86,7 +94,6 @@
         </div>
       </div>
 
-      <!-- NUEVO 2: ACCORDION (FAQ) -->
       <h3 class="h6 mb-3">CONOCE MÁS</h3>
 
       <div class="accordion" id="faqAbout">
@@ -146,7 +153,6 @@
     </div>
   </footer>
 
-  <!-- IMPORTANTE: Bootstrap JS (sin esto no funciona carousel/accordion) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
